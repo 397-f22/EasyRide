@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import './App.css';
 import { Ride } from './components/ride';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rides = [{
   destination: {street_address: "1000 West O'hare Avenue",
