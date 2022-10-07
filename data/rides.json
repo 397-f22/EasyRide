@@ -1,0 +1,48 @@
+{
+    "rides": [
+        {
+            "id": 1,
+            "destination": {
+                "street_address": "1000 West O'hare Avenue",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60666"
+            },
+            "pickup": {
+                "street_address": "2145 Sheridan Road",
+                "city": "Evanston",
+                "state": "IL",
+                "zip": "60201"
+            },
+            "date": "",
+            "total_cost": 43.27,
+            "total_seats": 4,
+            "organizer": "Chris Riesbeck",
+            "passengers": [
+                "Gavin"
+            ]
+        },
+        {
+            "id": 2,
+            "destination": {
+                "street_address": "1000 West O'hare Avenue",
+                "city": "Chicago",
+                "state": "IL",
+                "zip": "60666"
+            },
+            "pickup": {
+                "street_address": "1927 Orrington Avenue",
+                "city": "Evanston",
+                "state": "IL",
+                "zip": "60201"
+            },
+            "date": "",
+            "total_cost": 50,
+            "total_seats": 6,
+            "organizer": "Morty Schapiro",
+            "passengers": [
+                "Chris"
+            ]
+        }
+    ]
+}
