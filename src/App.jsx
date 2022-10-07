@@ -1,43 +1,28 @@
 import { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Ride } from './components/ride';
+
+const rides = [{
+  destination: {street_address: "1000 West O'hare Avenue",
+                city: "Chicago",
+                state: "IL",
+                zip: "60666"},
+  pickup: {street_address: "2145 Sheridan Road",
+          city: "Evanston",
+          state: "IL",
+          zip: "60201"},
+  date: Math.floor(new Date(2022, 9, 7, 12, 0, 0).getTime() / 1000),
+  total_cost: 43.27,
+  total_seats: 4,
+  organizer: "Chris Riesbeck",
+  passengers: ["Gavin"]
+}];
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount(count => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test hot module replacement (HMR).
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <header>EasyRide</header>
+      <Ride ride={rides[0]} />
     </div>
   );
 };
