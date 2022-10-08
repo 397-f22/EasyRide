@@ -1,0 +1,11 @@
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+
+.Modal {
+    width: 90vw;
+    padding: 50px;
+}
