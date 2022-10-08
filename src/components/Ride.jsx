@@ -5,7 +5,7 @@ export const Ride = ({ ride }) => {
         <Card>
             <Card.Body>
                 <Card.Title>{ride.destination.street_address}</Card.Title>
-                <Card.Text>{ride.destination}</Card.Text>
+                <Card.Text>{ride.destination.street_address}</Card.Text>
             </Card.Body>
         </Card>
     );
