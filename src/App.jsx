@@ -4,12 +4,12 @@ import { Header } from "./components/Header";
 import { RideList } from "./components/RideList";
 
 const App = () => {
-    return (
-        <div className="App">
-            <Header />
-            <RideList />
-        </div>
-    );
+  return (
+    <div className="App">
+      <Header />
+      <RideList />
+    </div>
+  );
 };
 
 export default App;
