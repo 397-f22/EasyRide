@@ -4,8 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import "./RideInfo.css";
 
 export const RideInfo = ({ show, onHide, ride }) => {
-  console.log(ride);
-
   if (ride != undefined) {
     const date = new Date(ride.date).toLocaleString("en-US", {
       month: "long",

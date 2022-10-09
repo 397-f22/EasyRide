@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 
 import "./Ride.css";
+import pikachu from "../../data/pikachu.png";
 
 export const Ride = ({ ride, handleShow }) => {
   const date = new Date(ride.date).toLocaleString("en-US", {
@@ -13,18 +14,25 @@ export const Ride = ({ ride, handleShow }) => {
 
   return (
     <Card onClick={() => handleShow(ride)}>
-      <Card.Body>
-        <Card.Title>{ride.destination.street_address}</Card.Title>
-        <Card.Text>Pickup: {ride.pickup.street_address}</Card.Text>
-        <Card.Text>{date}</Card.Text>
-        <div>
-            <p className="alignleft">
-              ${(ride.total_cost / (ride.passengers.length + 1)).toFixed(2)}
-              /person
-            </p>
-            <p className="alignright">{ride.total_seats - ride.passengers.length} available</p>
+      <div className="row">
+        <div className="profilePicDiv">
+        <img src={pikachu} className="profilePic"/>
         </div>
-      </Card.Body>
+      <div className="cardBodyDiv">
+        <Card.Body>
+          <Card.Title>{ride.destination.street_address}</Card.Title>
+          <Card.Text>Pickup: {ride.pickup.street_address}</Card.Text>
+          <Card.Text>{date}</Card.Text>
+          <div>
+              <p className="alignleft">
+                ${(ride.total_cost / (ride.passengers.length + 1)).toFixed(2)}
+                /person
+              </p>
+              <p className="alignright">{ride.total_seats - ride.passengers.length} available</p>
+          </div>
+        </Card.Body>
+      </div>
+      </div>
     </Card>
   );
 };
