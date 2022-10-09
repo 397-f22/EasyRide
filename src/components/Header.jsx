@@ -1,15 +1,21 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { Button, Nav, Navbar, Container } from "react-bootstrap";
+import { Plus } from "react-bootstrap-icons";
 
 export const Header = () => (
   <Navbar bg="dark" variant="dark">
-    <Container className="mx-2">
-      <Navbar.Brand href="#home">Easy Ride</Navbar.Brand>
-      <Nav className="me-auto">
-        <Nav.Link href="#home">All Rides</Nav.Link>
-        <Nav.Link href="#features">My Rides</Nav.Link>
+    <Container>
+      <Navbar.Brand className="fs-1" href="#allrides">
+        EasyRide
+      </Navbar.Brand>
+      <Nav className="fs-3 me-auto">
+        <Nav.Link href="#allrides">All Rides</Nav.Link>
+        <Nav.Link href="#myrides">My Rides</Nav.Link>
       </Nav>
+      <Navbar.Collapse className="justify-content-end">
+        <Button variant="light" className="rounded-pill">
+          <Plus size={40} onClick={() => alert("not implemented!")}></Plus>
+        </Button>
+      </Navbar.Collapse>
     </Container>
   </Navbar>
 );
