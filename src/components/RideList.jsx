@@ -1,4 +1,4 @@
-import { Ride } from "./ride";
+import { Ride } from "./Ride";
 import { RideInfo } from "./RideInfo";
 import rides_json from "../../data/rides.json";
 import { useState } from "react";
