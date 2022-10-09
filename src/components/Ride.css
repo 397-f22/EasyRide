@@ -1,40 +1,40 @@
 .card {
-    height: 30vw;
+  height: 30vw;
 }
 
 .alignleft {
-	float: left;
+  float: left;
 }
 
 .alignright {
-	float: right;
+  float: right;
 }
 
 .row {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .profilePicDiv {
-    height: 30vw;
-    width: 30vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 50px;
+  height: 30vw;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50px;
 }
 
 .profilePic {
-    border-radius: 50%;
-    height: 20vw;
-    width: 20vw;
-    border: 3px solid #555;
+  border-radius: 50%;
+  height: 20vw;
+  width: 20vw;
+  border: 3px solid #555;
 }
 
 .cardBodyDiv {
-    width: 65vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right: 50px;
+  width: 65vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 50px;
 }

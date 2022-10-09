@@ -16,22 +16,24 @@ export const Ride = ({ ride, handleShow }) => {
     <Card onClick={() => handleShow(ride)}>
       <div className="row">
         <div className="profilePicDiv">
-        <img src={pikachu} className="profilePic"/>
+          <img src={pikachu} className="profilePic" />
         </div>
-      <div className="cardBodyDiv">
-        <Card.Body>
-          <Card.Title>{ride.destination.street_address}</Card.Title>
-          <Card.Text>Pickup: {ride.pickup.street_address}</Card.Text>
-          <Card.Text>{date}</Card.Text>
-          <div>
+        <div className="cardBodyDiv">
+          <Card.Body>
+            <Card.Title>{ride.destination.street_address}</Card.Title>
+            <Card.Text>Pickup: {ride.pickup.street_address}</Card.Text>
+            <Card.Text>{date}</Card.Text>
+            <div>
               <p className="alignleft">
                 ${(ride.total_cost / (ride.passengers.length + 1)).toFixed(2)}
                 /person
               </p>
-              <p className="alignright">{ride.total_seats - ride.passengers.length} available</p>
-          </div>
-        </Card.Body>
-      </div>
+              <p className="alignright">
+                {ride.total_seats - ride.passengers.length} available
+              </p>
+            </div>
+          </Card.Body>
+        </div>
       </div>
     </Card>
   );
