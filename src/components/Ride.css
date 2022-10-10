@@ -16,16 +16,17 @@
 }
 
 .profilePicDiv {
-  
   width: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 50px
+  padding-left: 50px;
 }
 
 .profilePic {
   border-radius: 50%;
+  max-width: 150px;
+  max-height: 150px;
   height: 20vw;
   width: 20vw;
   border: 3px solid #555;

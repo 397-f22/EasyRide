@@ -1,6 +1,6 @@
-import Card from "react-bootstrap/Card";
-
 import "./Ride.css";
+
+import Card from "react-bootstrap/Card";
 import pikachu from "../../data/pikachu.png";
 
 export const Ride = ({ ride, handleShow }) => {
@@ -13,7 +13,7 @@ export const Ride = ({ ride, handleShow }) => {
   });
 
   return (
-    <Card onClick={() => handleShow(ride)}>
+    <Card onClick={() => handleShow(ride)} className="m-3">
       <div className="row">
         <div className="profilePicDiv">
           <img src={pikachu} className="profilePic" />
