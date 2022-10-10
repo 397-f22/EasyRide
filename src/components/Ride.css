@@ -16,7 +16,7 @@
 }
 
 .profilePicDiv {
-  width: 25vw;
+  width: 23vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,5 +33,5 @@
 }
 
 .cardBodyDiv {
-  width: 70vw;
+  width: 65vw;
 }
