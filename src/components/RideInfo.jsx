@@ -1,7 +1,8 @@
-import { ModalBody } from "react-bootstrap";
+import "./RideInfo.css";
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import "./RideInfo.css";
+import { ModalBody } from "react-bootstrap";
 
 export const RideInfo = ({ show, onHide, ride }) => {
   if (ride != undefined) {
@@ -41,7 +42,9 @@ export const RideInfo = ({ show, onHide, ride }) => {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="primary">Book ride</Button>
+          <Button variant="primary" onClick={() => alert("booked ride!")}>
+            Book ride
+          </Button>
         </Modal.Footer>
       </Modal>
     );
