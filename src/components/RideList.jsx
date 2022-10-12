@@ -7,7 +7,7 @@ export const RideList = () => {
   const [show, setShow] = useState(false);
   const [selectedRide, setSelectedRide] = useState();
 
-  const [rides, error] = useDbData("/");
+  const [rides, error] = useDbData("/rides");
 
   if (error) return <h1>Error loading data: {error.toString()}</h1>;
   if (rides === undefined) return <h1>Loading data...</h1>;
@@ -23,7 +23,7 @@ export const RideList = () => {
   return (
     <div>
       <div className="p-3">
-        {Object.entries(rides["rides"]).map(([id, ride]) => (
+        {Object.entries(rides).map(([id, ride]) => (
           <Ride key={id} ride={ride} handleShow={handleShow} />
         ))}
       </div>
