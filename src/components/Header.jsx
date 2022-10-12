@@ -1,8 +1,9 @@
+import "./Header.css";
+
 import { Button, Container, Navbar, Offcanvas } from "react-bootstrap";
+
 import { Link } from "react-router-dom";
 import { Plus } from "react-bootstrap-icons";
-
-import "./Header.css";
 
 export const Header = () => {
   return (
@@ -26,7 +27,9 @@ export const Header = () => {
           </Offcanvas.Body>
         </Navbar.Offcanvas>
         <Button variant="light" className="rounded-pill">
-          <Plus size={40} onClick={() => alert("not implemented!")}></Plus>
+          <Link to="/add" className="plain-link">
+            <Plus size={40}></Plus>
+          </Link>
         </Button>
       </Container>
     </Navbar>
