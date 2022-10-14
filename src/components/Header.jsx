@@ -1,29 +1,73 @@
-import { Button, Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import "./Header.css";
 
+import { Button, Container, Navbar, Offcanvas } from "react-bootstrap";
+
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Plus } from "react-bootstrap-icons";
 
-export const Header = () => {
+import { signInWithGoogle, signOut, useAuthState } from "../utilities/firebase";
+
+const SignInButton = () => (
+  <button
+    className="ms-auto btn btn-dark"
+    onClick={signInWithGoogle}
+    style={{ fontSize: 30 }}
+  >
+    Sign in
+  </button>
+);
+
+const SignOutButton = () => (
+  <button className="ms-auto btn btn-dark" onClick={signOutProcess}>
+    Sign out
+  </button>
+);
+
+const signOutProcess = () => {
+  signOut();
+
+  const navigate = useNavigate();
+  navigate("/");
+};
+
+const AuthButton = () => {
+  const [user] = useAuthState();
+  return user ? <SignOutButton /> : <SignInButton />;
+};
+
+const activation = ({ isActive }) => (isActive ? "active" : "inactive");
+
+export const Header = ({ showAddRides }) => {
   return (
     <Navbar bg="dark" variant="dark" expand={false}>
       <Container fluid>
         <Navbar.Toggle className="mx-2" />
-        <Navbar.Brand href="#home">
+        <Link className="plain-link text-white" to="/">
           <h1 className="m-0">Easy Ride</h1>
-        </Navbar.Brand>
-        <Navbar.Offcanvas className="flex-grow-1 pe-3" placement="start">
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>
-              <h2>Easy Ride</h2>
-            </Offcanvas.Title>
-          </Offcanvas.Header>
+        </Link>
+        <Navbar.Offcanvas className="flex-grow-1 pe-3" placement="top">
+          <Offcanvas.Header closeButton></Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav.Link href="#home">All Rides</Nav.Link>
-            <Nav.Link href="#features">My Rides</Nav.Link>
+            <h1>
+              <Link className="plain-link " to="/allRides">
+                All Rides
+              </Link>
+              <Link className="plain-link" to="/myRides">
+                My Rides
+              </Link>
+            </h1>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
-        <Button variant="light" className="rounded-pill">
-          <Plus size={40} onClick={() => alert("not implemented!")}></Plus>
-        </Button>
+        <AuthButton />
+        {showAddRides ? (
+          <Button variant="light" className="rounded-pill">
+            <Link to="/addRide" className="plain-link">
+              <Plus size={40}></Plus>
+            </Link>
+          </Button>
+        ) : (
+          ""
+        )}
       </Container>
     </Navbar>
   );
