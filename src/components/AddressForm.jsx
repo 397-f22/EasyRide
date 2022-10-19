@@ -1,21 +1,21 @@
 import Form from "react-bootstrap/Form";
 
-export const AddressForm = () => {
+export const AddressForm = ({ id }) => {
   return (
     <div>
-      <Form.Group controlId="street">
+      <Form.Group className="mb-3" controlId={`${id}_street`}>
         <Form.Label>Street Address</Form.Label>
         <Form.Control type="text" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="city">
+      <Form.Group className="mb-3" controlId={`${id}_city`}>
         <Form.Label>City</Form.Label>
         <Form.Control type="text" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="state">
+      <Form.Group className="mb-3" controlId={`${id}_state`}>
         <Form.Label>State</Form.Label>
         <Form.Control type="text" />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="zip">
+      <Form.Group className="mb-3" controlId={`${id}_zip`}>
         <Form.Label>Zip Code</Form.Label>
         <Form.Control type="text" />
       </Form.Group>

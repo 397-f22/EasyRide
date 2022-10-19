@@ -12,6 +12,8 @@ export const Ride = ({ ride, handleShow }) => {
     hour12: true,
   });
 
+  console.log(ride.passengers);
+
   return (
     <Card onClick={() => handleShow(ride)} className="m-3">
       <div className="row">
