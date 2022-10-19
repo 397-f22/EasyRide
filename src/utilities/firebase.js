@@ -1,6 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref, update } from "firebase/database";
+import {
+  set,
+  child,
+  getDatabase,
+  onValue,
+  push,
+  ref,
+  update,
+} from "firebase/database";
+
 import {
   getAuth,
   GoogleAuthProvider,
@@ -81,4 +90,9 @@ export const useAuthState = () => {
   useEffect(() => onAuthStateChanged(getAuth(firebase), setUser));
 
   return [user];
+};
+
+//Add new user
+export const addNewUser = (newUser) => {
+  set(ref(database, "users/" + newUser.uid), newUser);
 };
