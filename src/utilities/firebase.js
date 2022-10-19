@@ -93,6 +93,6 @@ export const useAuthState = () => {
 };
 
 //Add new user
-export const addNewUser = (newUser) => {
-  set(ref(database, "users/" + newUser.uid), newUser);
+export const addNewUser = (newUser, uid) => {
+  set(ref(database, "users/" + uid), newUser);
 };

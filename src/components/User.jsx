@@ -3,7 +3,6 @@ import { useAuthState, addNewUser, useDbData } from "../utilities/firebase";
 const AddUserDB = (user) => {
   if (user) {
     const newUser = {
-      uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
@@ -11,7 +10,7 @@ const AddUserDB = (user) => {
       rides: "[]",
     };
 
-    addNewUser(newUser);
+    addNewUser(newUser, user.uid);
   }
 };
 
