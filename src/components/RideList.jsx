@@ -43,8 +43,6 @@ export const RideList = () => {
   );
 
   const filteredRides = () => {
-    console.log(Object.entries(rides));
-    console.log(searcher.search(searchstr));
     return searchstr == "" ? rides : searcher.search(searchstr);
   };
 
