@@ -7,8 +7,14 @@ import { useNavigate } from "react-router-dom";
 
 export const AddRide = () => {
   const navigate = useNavigate();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log(evt.target);
+  };
+
   return (
-    <Form className="p-3">
+    <Form className="p-3" onSubmit={handleSubmit}>
       <h3>Pickup</h3>
       <DateTimeForm />
       <AddressForm />
