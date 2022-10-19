@@ -1,12 +1,13 @@
+import "./RideList.css";
+
+import Form from "react-bootstrap/Form";
+import FuzzySearch from "fuzzy-search";
+import InputGroup from "react-bootstrap/InputGroup";
 import { Ride } from "./Ride";
 import { RideInfo } from "./RideInfo";
-import { useState } from "react";
-import { useDbData } from "../utilities/firebase";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 import { Search } from "react-bootstrap-icons";
-import "./RideList.css";
-import FuzzySearch from "fuzzy-search";
+import { useDbData } from "../utilities/firebase";
+import { useState } from "react";
 
 export const RideList = () => {
   const [show, setShow] = useState(false);
@@ -21,7 +22,6 @@ export const RideList = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = (ride) => {
-    console.log("clicked");
     setShow(true);
     setSelectedRide(ride);
   };
