@@ -26,8 +26,11 @@ export const RideList = () => {
     setSelectedRide(ride);
   };
 
+  const ridesValues =
+    rides == null ? [] : Object.entries(rides).map(([k, v]) => v);
+
   const searcher = new FuzzySearch(
-    rides,
+    ridesValues,
     [
       "destination.city",
       "destination.state",
@@ -40,7 +43,8 @@ export const RideList = () => {
   );
 
   const filteredRides = () => {
-    console.log(searchstr);
+    console.log(Object.entries(rides));
+    console.log(searcher.search(searchstr));
     return searchstr == "" ? rides : searcher.search(searchstr);
   };
 
