@@ -1,22 +1,22 @@
-import { useCallback, useEffect, useState } from "react";
-import { initializeApp } from "firebase/app";
 import {
-  set,
+  GoogleAuthProvider,
+  getAuth,
+  onAuthStateChanged,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import {
   child,
   getDatabase,
   onValue,
   push,
   ref,
   update,
+  set
 } from "firebase/database";
+import { useCallback, useEffect, useState } from "react";
 
-import {
-  getAuth,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithPopup,
-  signOut,
-} from "firebase/auth";
+import { initializeApp } from "firebase/app";
 
 // DATABASE FUNCTIONS
 const firebaseConfig = {
@@ -92,7 +92,21 @@ export const useAuthState = () => {
   return [user];
 };
 
+// Add new ride
+export const addNewRide = (uid, newRide) => {
+  // Get a key for a new ride.
+  const newRideKey = push(child(ref(database), "rides")).key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  const updates = {};
+  updates["/rides/" + newRideKey] = newRide;
+  // updates['/user-rides/' + uid + '/' + newRideKey] = newRide;
+
+  return update(ref(database), updates);
+ }
+
 //Add new user
 export const addNewUser = (newUser, uid) => {
   set(ref(database, "users/" + uid), newUser);
+
 };

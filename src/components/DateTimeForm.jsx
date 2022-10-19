@@ -1,5 +1,4 @@
 import Form from "react-bootstrap/Form";
-import TimePicker from "react-bootstrap-time-picker";
 
 export const DateTimeForm = () => {
   return (
@@ -8,9 +7,9 @@ export const DateTimeForm = () => {
         <Form.Label>Date</Form.Label>
         <Form.Control type="date" />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" controlId="time">
         <Form.Label>Time</Form.Label>
-        <TimePicker start="00:00" end="24:00" step={30} />
+        <Form.Control type="time" />
       </Form.Group>
     </div>
   );

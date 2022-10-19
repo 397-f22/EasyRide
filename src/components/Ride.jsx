@@ -12,6 +12,8 @@ export const Ride = ({ ride, handleShow }) => {
     hour12: true,
   });
 
+  console.log(ride.passengers);
+
   return (
     <Card onClick={() => handleShow(ride)} className="m-3">
       <div className="row">
@@ -20,8 +22,14 @@ export const Ride = ({ ride, handleShow }) => {
         </div>
         <div className="cardBodyDiv">
           <Card.Body>
-            <Card.Title>{ride.destination.street_address}</Card.Title>
-            <Card.Text>Pickup: {ride.pickup.street_address}</Card.Text>
+            <Card.Title>
+              {ride.destination.street_address}, {ride.destination.city},{" "}
+              {ride.destination.state} {ride.destination.zip}
+            </Card.Title>
+            <Card.Text>
+              Pickup: {ride.pickup.street_address}, {ride.destination.city},{" "}
+              {ride.destination.state} {ride.destination.zip}
+            </Card.Text>
             <Card.Text>{date}</Card.Text>
             <div>
               <p className="alignleft">
