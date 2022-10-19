@@ -12,6 +12,7 @@ import {
   push,
   ref,
   update,
+  set
 } from "firebase/database";
 import { useCallback, useEffect, useState } from "react";
 
@@ -93,7 +94,7 @@ export const useAuthState = () => {
 
 // Add new ride
 export const addNewRide = (uid, newRide) => {
-  // Get a key for a new Post.
+  // Get a key for a new ride.
   const newRideKey = push(child(ref(database), "rides")).key;
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
@@ -102,4 +103,10 @@ export const addNewRide = (uid, newRide) => {
   // updates['/user-rides/' + uid + '/' + newRideKey] = newRide;
 
   return update(ref(database), updates);
+ }
+
+//Add new user
+export const addNewUser = (newUser, uid) => {
+  set(ref(database, "users/" + uid), newUser);
+
 };

@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import { AddRide } from "./components/AddRide";
 import { Header } from "./components/Header";
 import { RideList } from "./components/RideList";

@@ -5,6 +5,7 @@ import { Button, Container, Navbar, Offcanvas } from "react-bootstrap";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Plus } from "react-bootstrap-icons";
 
+import { getUser } from "./User";
 import { signInWithGoogle, signOut, useAuthState } from "../utilities/firebase";
 
 const SignInButton = () => (
@@ -18,7 +19,7 @@ const SignInButton = () => (
 );
 
 const SignOutButton = () => (
-  <button className="ms-auto btn btn-dark" onClick={signOutProcess}>
+  <button className="ms-auto btn btn-dark" onClick={signOut}>
     Sign out
   </button>
 );
@@ -31,6 +32,7 @@ const signOutProcess = () => {
 };
 
 const AuthButton = () => {
+  getUser();
   const [user] = useAuthState();
   return user ? <SignOutButton /> : <SignInButton />;
 };
