@@ -14,7 +14,7 @@ export const RideInfo = ({ show, onHide, ride }) => {
       hour12: true,
     });
     return (
-      <Modal show={show} onHide={onHide} className="Modal">
+      <Modal show={show} onHide={onHide} className="Modal" centered>
         <Modal.Header closeButton>
           <Modal.Title>{ride.destination.street_address}</Modal.Title>
         </Modal.Header>
