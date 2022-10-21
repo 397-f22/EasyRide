@@ -5,6 +5,24 @@ import Modal from "react-bootstrap/Modal";
 import { ModalBody } from "react-bootstrap";
 import { BookRide } from "./BookRide";
 
+const BookRideButton = ({ ride, user }) => {
+  if (ride.passengers.includes(user.uid)) {
+    return ""
+  } else {
+    return (
+      <Button
+        variant="primary"
+        onClick={() => {
+          BookRide(user, ride);
+          alert("booked ride!");
+        }}
+      >
+        Book ride
+      </Button>
+    );
+  }
+};
+
 export const RideInfo = ({ show, onHide, ride, user, users }) => {
   if (ride != undefined) {
     const date = new Date(ride.date).toLocaleString("en-US", {
@@ -14,6 +32,7 @@ export const RideInfo = ({ show, onHide, ride, user, users }) => {
       minute: "numeric",
       hour12: true,
     });
+
     return (
       <Modal show={show} onHide={onHide} className="Modal" centered>
         <Modal.Header closeButton>
@@ -46,15 +65,7 @@ export const RideInfo = ({ show, onHide, ride, user, users }) => {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button
-            variant="primary"
-            onClick={() => {
-              BookRide(user, ride);
-              alert("booked ride!");
-            }}
-          >
-            Book ride
-          </Button>
+          <BookRideButton ride={ride} user={user}/>
         </Modal.Footer>
       </Modal>
     );

@@ -6,7 +6,6 @@ import { useState } from "react";
 export const MyRides = ({ rides, user, users}) => {
   const [show, setShow] = useState(false);
   const [selectedRide, setSelectedRide] = useState();
-  console.log(user)
 
   if ("rides" in user) {
     const userRidesValues = rides == null ? [] : Object.entries(user.rides).map(([k, v]) => v);
