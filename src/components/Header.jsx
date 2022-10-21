@@ -1,12 +1,11 @@
 import "./Header.css";
 
 import { Button, Container, Navbar, Offcanvas } from "react-bootstrap";
-
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { Plus } from "react-bootstrap-icons";
-
-import { getUser } from "./User";
 import { signInWithGoogle, signOut, useAuthState } from "../utilities/firebase";
+
+import { Plus } from "react-bootstrap-icons";
+import { getUser } from "./User";
 
 const SignInButton = () => (
   <button
@@ -19,16 +18,14 @@ const SignInButton = () => (
 );
 
 const SignOutButton = () => (
-  <button className="ms-auto btn btn-dark" onClick={signOut}>
+  <button className="ms-auto btn btn-dark" onClick={signOutProcess} to="/">
     Sign out
   </button>
 );
 
 const signOutProcess = () => {
   signOut();
-
-  const navigate = useNavigate();
-  navigate("/");
+  console.log("here");
 };
 
 const AuthButton = () => {

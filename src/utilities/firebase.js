@@ -11,8 +11,8 @@ import {
   onValue,
   push,
   ref,
+  set,
   update,
-  set
 } from "firebase/database";
 import { useCallback, useEffect, useState } from "react";
 
@@ -103,10 +103,21 @@ export const addNewRide = (uid, newRide) => {
   // updates['/user-rides/' + uid + '/' + newRideKey] = newRide;
 
   return update(ref(database), updates);
- }
+};
 
 //Add new user
 export const addNewUser = (newUser, uid) => {
   set(ref(database, "users/" + uid), newUser);
+};
 
+// Get user from user uid
+export const getUserWithId = (uid) => {
+  const path = `/users/${uid}`;
+  const [user, error] = useDbData(path);
+
+  if (error) return error.toString();
+  if (user === undefined) return "Loading...";
+  if (!user) return "Organizer not found";
+
+  return user;
 };
