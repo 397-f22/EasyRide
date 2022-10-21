@@ -13,6 +13,7 @@ import {
   ref,
   set,
   update,
+  set,
 } from "firebase/database";
 import { useCallback, useEffect, useState } from "react";
 
@@ -100,6 +101,26 @@ export const addNewRide = (uid, newRide) => {
   // Write the new post's data simultaneously in the posts list and the user's post list.
   const updates = {};
   updates["/rides/" + newRideKey] = newRide;
+  // updates['/user-rides/' + uid + '/' + newRideKey] = newRide;
+
+  return update(ref(database), updates);
+};
+
+// Replace a user's rides
+export const ReplaceUserRides = (uid, newRides) => {
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  const updates = {};
+  updates[`/users/${uid}/rides/`] = newRides;
+  // updates['/user-rides/' + uid + '/' + newRideKey] = newRide;
+
+  return update(ref(database), updates);
+};
+
+// Replace a ride's passengers
+export const ReplaceRidePassengers = (uid, newPassengers) => {
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  const updates = {};
+  updates[`/rides/${uid}/passengers/`] = newPassengers;
   // updates['/user-rides/' + uid + '/' + newRideKey] = newRide;
 
   return update(ref(database), updates);

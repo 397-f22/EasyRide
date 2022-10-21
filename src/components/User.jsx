@@ -7,7 +7,6 @@ const AddUserDB = (user) => {
       displayName: user.displayName,
       photoURL: user.photoURL,
       phoneNumber: user.phoneNumber,
-      rides: "[]",
     };
 
     addNewUser(newUser, user.uid);
@@ -24,9 +23,11 @@ export const getUser = () => {
     if (!users) return "No user found";
 
     if (user.uid in users) {
+      users[user.uid].uid = user.uid;
       return users[user.uid];
     } else {
       AddUserDB(user);
+      users[user.uid].uid = user.uid;
       return users[user.uid];
     }
   }

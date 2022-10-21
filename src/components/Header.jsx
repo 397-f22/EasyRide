@@ -30,7 +30,7 @@ const AuthButton = () => {
   return <SignOutButton />;
 };
 
-export const Header = ({ showAddRides }) => {
+export const Header = ({ showAddRides, user }) => {
   return (
     <Navbar bg="dark" variant="dark" expand={false}>
       <Container fluid>

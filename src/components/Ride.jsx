@@ -19,7 +19,7 @@ export const Ride = ({ ride, handleShow }) => {
     hour12: true,
   });
 
-  const organizer = getOrganizer(ride);
+  //console.log(ride.passengers);
 
   return (
     <Card onClick={() => handleShow(ride)} className="m-3">

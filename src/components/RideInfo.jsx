@@ -3,8 +3,9 @@ import "./RideInfo.css";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { ModalBody } from "react-bootstrap";
+import { BookRide } from "./BookRide";
 
-export const RideInfo = ({ show, onHide, ride }) => {
+export const RideInfo = ({ show, onHide, ride, user, users }) => {
   if (ride != undefined) {
     const date = new Date(ride.date).toLocaleString("en-US", {
       month: "long",
@@ -34,15 +35,24 @@ export const RideInfo = ({ show, onHide, ride }) => {
         </Modal.Body>
         <hr />
         <Modal.Body>
-          <p>Organizer: {ride.passengers[0]}</p>
+          <p>Organizer: {users[ride.passengers[0]].displayName}</p>
           <p>
             Passengers:{" "}
-            {ride.passengers.slice(1, ride.passengers.length).join(", ")}
+            {ride.passengers
+              .slice(1, ride.passengers.length)
+              .map((passenger) => users[passenger].displayName)
+              .join(", ")}
           </p>
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="primary" onClick={() => alert("booked ride!")}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              BookRide(user, ride);
+              alert("booked ride!");
+            }}
+          >
             Book ride
           </Button>
         </Modal.Footer>

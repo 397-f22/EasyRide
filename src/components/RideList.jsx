@@ -8,17 +8,12 @@ import { RideInfo } from "./RideInfo";
 import { Search } from "react-bootstrap-icons";
 import { useDbData } from "../utilities/firebase";
 import { useState } from "react";
+import { BookRide } from "./BookRide";
 
-export const RideList = () => {
+export const RideList = ({ rides, user, users }) => {
   const [show, setShow] = useState(false);
   const [selectedRide, setSelectedRide] = useState();
   const [searchstr, setSearch] = useState("");
-
-  const [rides, error] = useDbData("/rides");
-
-  if (error) return <h1>Error loading data: {error.toString()}</h1>;
-  if (rides === undefined) return <h1>Loading data...</h1>;
-  if (!rides) return <h1>No data found</h1>;
 
   const handleClose = () => setShow(false);
   const handleShow = (ride) => {
@@ -60,11 +55,18 @@ export const RideList = () => {
         </InputGroup>
       </div>
       <div className="mt-2">
-        {Object.entries(filteredRides()).map(([id, ride]) => (
-          <Ride key={id} ride={ride} handleShow={handleShow} />
-        ))}
+        {Object.entries(filteredRides()).map(([id, ride]) => {
+          ride.key = id;
+          return <Ride key={id} ride={ride} handleShow={handleShow} />;
+        })}
       </div>
-      <RideInfo show={show} onHide={handleClose} ride={selectedRide} />
+      <RideInfo
+        show={show}
+        onHide={handleClose}
+        ride={selectedRide}
+        user={user}
+        users={users}
+      />
     </div>
   );
 };
