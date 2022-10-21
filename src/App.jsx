@@ -8,6 +8,7 @@ import Landing from "./components/Landing";
 import { RideList } from "./components/RideList";
 import { useDbData, useDbUpdate } from "./utilities/firebase";
 import { getUser } from "./components/User";
+import { MyRides } from "./components/MyRides";
 
 const App = () => {
   const user = getUser();
@@ -58,6 +59,7 @@ const App = () => {
           element={
             <div>
               <Header showAddRides={true} user={user} />
+              <MyRides rides={rides} user={user} users={users}/>
             </div>
           }
         ></Route>
