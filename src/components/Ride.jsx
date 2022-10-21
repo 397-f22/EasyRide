@@ -11,6 +11,9 @@ const getOrganizer = (ride) => {
 };
 
 const Available = ({ user, ride }) => {
+  if (!user) {
+    return ""
+  }
   if (ride.passengers.includes(user.uid)) {
     return <p className="alignright">Booked!</p>;
   } else {

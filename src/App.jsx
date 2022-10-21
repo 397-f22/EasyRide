@@ -27,8 +27,6 @@ const App = () => {
   if (typeof user === "string" || user instanceof String)
     return <h1>{user}</h1>;
 
-  console.log(user);
-
   return (
     <BrowserRouter>
       <Routes>
