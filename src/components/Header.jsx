@@ -7,15 +7,21 @@ import { signInWithGoogle, signOut, useAuthState } from "../utilities/firebase";
 import { Plus } from "react-bootstrap-icons";
 import { getUser } from "./User";
 
-const SignOutButton = () => (
-  <Link className="btn btn-dark" onClick={signOutProcess} to="/">
-    Sign out
-  </Link>
-);
+const SignOutButton = () => {
+  const navigate = useNavigate();
 
-const signOutProcess = () => {
-  signOut();
-};
+  async function signOutProcess() {
+    await signOut();
+    
+    navigate("/");
+  }
+
+  return (
+  <button className="ms-auto btn btn-dark" onClick={signOutProcess}>
+    Sign out
+  </button>
+)
+}
 
 const AuthButton = () => {
   getUser();
