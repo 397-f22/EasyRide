@@ -7,21 +7,15 @@ import { signInWithGoogle, signOut, useAuthState } from "../utilities/firebase";
 import { Plus } from "react-bootstrap-icons";
 import { getUser } from "./User";
 
-const SignOutButton = () => {
-  const navigate = useNavigate();
-
-  async function signOutProcess() {
-    await signOut();
-    
-    navigate("/");
-  }
-
-  return (
-  <button className="ms-auto btn btn-dark" onClick={signOutProcess}>
+const SignOutButton = () => (
+  <Link className="btn btn-dark" onClick={signOutProcess} to="/">
     Sign out
-  </button>
-)
-}
+  </Link>
+);
+
+const signOutProcess = () => {
+  signOut();
+};
 
 const AuthButton = () => {
   getUser();
@@ -50,7 +44,7 @@ export const Header = ({ showAddRides }) => {
                 My Rides
               </Link>
             </h1>
-            <div className="d-flex">
+            <div className="d-flex justify-content-center">
               <AuthButton />
             </div>
           </Offcanvas.Body>
@@ -58,7 +52,7 @@ export const Header = ({ showAddRides }) => {
         {showAddRides ? (
           <Button variant="light" className="rounded-pill">
             <Link to="/addRide" className="plain-link">
-              <Plus size={40}></Plus>
+              <Plus size={30}></Plus>
             </Link>
           </Button>
         ) : (
