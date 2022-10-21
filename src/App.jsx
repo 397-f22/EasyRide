@@ -59,7 +59,7 @@ const App = () => {
           element={
             <div>
               <Header showAddRides={true} user={user} />
-              <MyRides rides={rides} user={user} users={users}/>
+              <MyRides rides={rides} user={user} users={users} />
             </div>
           }
         ></Route>
@@ -68,7 +68,7 @@ const App = () => {
           element={
             <div>
               <Header showAddRides={false} user={user} />
-              <AddRide />
+              <AddRide user={user} />
             </div>
           }
         ></Route>

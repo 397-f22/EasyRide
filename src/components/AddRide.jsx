@@ -6,7 +6,7 @@ import { RideInfoForm } from "./RideInfoForm";
 import { addNewRide } from "../utilities/firebase";
 import { useNavigate } from "react-router-dom";
 
-export const AddRide = () => {
+export const AddRide = ({ user }) => {
   const navigate = useNavigate();
 
   const handleSubmit = (evt) => {
@@ -29,12 +29,15 @@ export const AddRide = () => {
         state: evt.target.destination_state.value,
         zip: evt.target.destination_zip.value,
       },
-      passengers: ["USER ID"],
+      passengers: [user.uid],
       total_cost: Number(evt.target.cost.value),
       total_seats: Number(evt.target.seats.value),
     };
+    console.log(user);
+    console.log(user.uid);
+    console.log(ride.passengers);
 
-    addNewRide("", ride);
+    addNewRide(ride, user);
 
     navigate("/allRides");
   };

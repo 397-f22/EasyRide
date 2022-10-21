@@ -7,14 +7,13 @@ import { BookRide } from "./BookRide";
 
 const BookRideButton = ({ ride, user }) => {
   if (ride.passengers.includes(user.uid)) {
-    return ""
+    return "";
   } else {
     return (
       <Button
         variant="primary"
         onClick={() => {
           BookRide(user, ride);
-          alert("booked ride!");
         }}
       >
         Book ride
@@ -65,7 +64,7 @@ export const RideInfo = ({ show, onHide, ride, user, users }) => {
         </Modal.Body>
 
         <Modal.Footer>
-          <BookRideButton ride={ride} user={user}/>
+          <BookRideButton ride={ride} user={user} />
         </Modal.Footer>
       </Modal>
     );

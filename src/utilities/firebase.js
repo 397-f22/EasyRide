@@ -93,14 +93,19 @@ export const useAuthState = () => {
 };
 
 // Add new ride
-export const addNewRide = (uid, newRide) => {
+export const addNewRide = (newRide, user) => {
   // Get a key for a new ride.
   const newRideKey = push(child(ref(database), "rides")).key;
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
   const updates = {};
   updates["/rides/" + newRideKey] = newRide;
-  // updates['/user-rides/' + uid + '/' + newRideKey] = newRide;
+
+  if (!user.rides) {
+    ReplaceUserRides(user.uid, [newRideKey]);
+  } else {
+    ReplaceUserRides(user.uid, [...user.rides, newRideKey]);
+  }
 
   return update(ref(database), updates);
 };
