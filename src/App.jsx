@@ -1,10 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import { AddRide } from "./components/AddRide";
 import { Header } from "./components/Header";
-import { RideList } from "./components/RideList";
 import Landing from "./components/Landing";
+import { RideList } from "./components/RideList";
 
 const App = () => (
   <BrowserRouter>
@@ -12,8 +13,7 @@ const App = () => (
       <Route
         path="/"
         element={
-          <div>
-            <Header showAddRides={false} />
+          <div className="d-flex">
             <Landing />
           </div>
         }
