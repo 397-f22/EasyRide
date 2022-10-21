@@ -22,7 +22,7 @@ const BookRideButton = ({ ride, user }) => {
   }
 };
 
-export const RideInfo = ({ show, onHide, ride, user, users }) => {
+export const RideInfo = ({ show, onHide, ride, user, users, myrides }) => {
   if (ride != undefined) {
     const date = new Date(ride.date).toLocaleString("en-US", {
       month: "long",
@@ -53,12 +53,27 @@ export const RideInfo = ({ show, onHide, ride, user, users }) => {
         </Modal.Body>
         <hr />
         <Modal.Body>
-          <p>Organizer: {users[ride.passengers[0]].displayName}</p>
+          <p>
+            Organizer:{" "}
+            {myrides
+              ? users[ride.passengers[0]].displayName +
+                " (" +
+                users[ride.passengers[0]].email +
+                ")"
+              : users[ride.passengers[0]].displayName}
+          </p>
           <p>
             Passengers:{" "}
             {ride.passengers
               .slice(1, ride.passengers.length)
-              .map((passenger) => users[passenger].displayName)
+              .map((passenger) =>
+                myrides
+                  ? users[passenger].displayName +
+                    " (" +
+                    users[passenger].email +
+                    ")"
+                  : users[passenger].displayName
+              )
               .join(", ")}
           </p>
         </Modal.Body>

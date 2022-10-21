@@ -2,16 +2,27 @@ import { Ride } from "./Ride";
 import { RideInfo } from "./RideInfo";
 import { useState } from "react";
 
-
-export const MyRides = ({ rides, user, users}) => {
+export const MyRides = ({ rides, user, users }) => {
   const [show, setShow] = useState(false);
   const [selectedRide, setSelectedRide] = useState();
 
   if ("rides" in user) {
-    const userRidesValues = rides == null ? [] : Object.entries(user.rides).map(([k, v]) => v);
-    var userRides = userRidesValues.map(x => rides[x]) 
+    const userRidesValues =
+      rides == null ? [] : Object.entries(user.rides).map(([k, v]) => v);
+    var userRides = userRidesValues.map((x) => rides[x]);
   } else {
-    return <div style={{height: "80vh", display: "flex", justifyContent: "center", alignItems: "center"}}><h1>No rides booked yet.</h1></div>;
+    return (
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>No rides booked yet.</h1>
+      </div>
+    );
   }
 
   const handleClose = () => setShow(false);
@@ -33,6 +44,7 @@ export const MyRides = ({ rides, user, users}) => {
         ride={selectedRide}
         user={user}
         users={users}
+        myrides={true}
       />
     </div>
   );
