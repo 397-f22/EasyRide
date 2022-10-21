@@ -10,7 +10,19 @@ const getOrganizer = (ride) => {
   return getUserWithId(organizerId);
 };
 
-export const Ride = ({ ride, handleShow }) => {
+const Available = ({ user, ride }) => {
+  if (ride.passengers.includes(user.uid)) {
+    return <p className="alignright">Booked!</p>;
+  } else {
+    return (
+    <p className="alignright">
+      {ride.total_seats - ride.passengers.length} available
+    </p>
+    );
+  }
+};
+
+export const Ride = ({ user, ride, handleShow }) => {
   const date = new Date(ride.date).toLocaleString("en-US", {
     month: "long",
     day: "numeric",
@@ -46,9 +58,7 @@ export const Ride = ({ ride, handleShow }) => {
                 ${(ride.total_cost / (ride.passengers.length + 1)).toFixed(2)}
                 /person
               </p>
-              <p className="alignright">
-                {ride.total_seats - ride.passengers.length} available
-              </p>
+              <Available user={user} ride={ride} />
             </div>
           </Card.Body>
         </div>

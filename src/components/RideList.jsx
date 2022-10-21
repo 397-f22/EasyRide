@@ -57,7 +57,7 @@ export const RideList = ({ rides, user, users }) => {
       <div className="mt-2">
         {Object.entries(filteredRides()).map(([id, ride]) => {
           ride.key = id;
-          return <Ride key={id} ride={ride} handleShow={handleShow} />;
+          return <Ride user={user} key={id} ride={ride} handleShow={handleShow} />;
         })}
       </div>
       <RideInfo
