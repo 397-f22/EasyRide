@@ -1,7 +1,14 @@
 import "./Ride.css";
 
 import Card from "react-bootstrap/Card";
+import { getUser } from "./User";
+import { getUserWithId } from "../utilities/firebase";
 import pikachu from "../../data/pikachu.png";
+
+const getOrganizer = (ride) => {
+  const organizerId = ride.passengers[0];
+  return getUserWithId(organizerId);
+};
 
 export const Ride = ({ ride, handleShow }) => {
   const date = new Date(ride.date).toLocaleString("en-US", {
@@ -12,13 +19,16 @@ export const Ride = ({ ride, handleShow }) => {
     hour12: true,
   });
 
-  console.log(ride.passengers);
+  const organizer = getOrganizer(ride);
 
   return (
     <Card onClick={() => handleShow(ride)} className="m-3">
       <div className="row">
         <div className="profilePicDiv">
-          <img src={pikachu} className="profilePic" />
+          <img
+            src={organizer == null ? "" : organizer.photoURL}
+            className="profilePic"
+          />
         </div>
         <div className="cardBodyDiv">
           <Card.Body>
