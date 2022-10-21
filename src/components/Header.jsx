@@ -6,6 +6,7 @@ import { signInWithGoogle, signOut, useAuthState } from "../utilities/firebase";
 
 import { Plus } from "react-bootstrap-icons";
 import { getUser } from "./User";
+import { Logo } from "./Logo";
 
 const SignOutButton = () => (
   <Link className="btn btn-dark" onClick={signOutProcess} to="/">
@@ -23,15 +24,13 @@ const AuthButton = () => {
   return <SignOutButton />;
 };
 
-const activation = ({ isActive }) => (isActive ? "active" : "inactive");
-
 export const Header = ({ showAddRides }) => {
   return (
     <Navbar bg="dark" variant="dark" expand={false}>
       <Container fluid>
         <Navbar.Toggle className="mx-2" />
         <Link className="plain-link text-white" to="/">
-          <h1 className="m-0">Easy Ride</h1>
+          <Logo isDark={false} size={30} />
         </Link>
         <Navbar.Offcanvas className="flex-grow-1 pe-3" placement="top">
           <Offcanvas.Header closeButton></Offcanvas.Header>
