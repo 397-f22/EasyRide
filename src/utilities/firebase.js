@@ -13,7 +13,6 @@ import {
   ref,
   set,
   update,
-  set,
 } from "firebase/database";
 import { useCallback, useEffect, useState } from "react";
 
