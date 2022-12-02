@@ -1,8 +1,8 @@
 import "./RideInfo.css";
 
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { ModalBody } from "react-bootstrap";
+import  from "react-bootstrap/";
+import { Body } from "react-bootstrap";
 import { BookRide } from "./BookRide";
 
 const BookRideButton = ({ ride, user }) => {
@@ -33,12 +33,12 @@ export const RideInfo = ({ show, onHide, ride, user, users, myrides }) => {
     });
 
     return (
-      <Modal show={show} onHide={onHide} className="Modal" centered>
-        <Modal.Header closeButton>
-          <Modal.Title>{ride.destination.street_address}</Modal.Title>
-        </Modal.Header>
+      < show={show} onHide={onHide} className="" centered>
+        <.Header closeButton>
+          <.Title>{ride.destination.street_address}</.Title>
+        </.Header>
 
-        <Modal.Body>
+        <.Body>
           <p>Pickup: {ride.pickup.street_address}</p>
           <p>{date}</p>
           <div>
@@ -50,9 +50,9 @@ export const RideInfo = ({ show, onHide, ride, user, users, myrides }) => {
               {ride.total_seats - ride.passengers.length} available
             </p>
           </div>
-        </Modal.Body>
+        </.Body>
         <hr />
-        <Modal.Body>
+        <.Body>
           <p>
             Organizer:{" "}
             {myrides
@@ -76,12 +76,12 @@ export const RideInfo = ({ show, onHide, ride, user, users, myrides }) => {
               )
               .join(", ")}
           </p>
-        </Modal.Body>
+        </.Body>
 
-        <Modal.Footer>
+        <.Footer>
           <BookRideButton ride={ride} user={user} />
-        </Modal.Footer>
-      </Modal>
+        </.Footer>
+      </>
     );
   }
 };
